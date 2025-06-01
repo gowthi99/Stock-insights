@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Magical GPT Prompts - Out of the Box AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark background */
+            color: #E5E7EB; /* Light text */
+        }
+        .header-gradient {
+            background: linear-gradient(135deg, #6D28D9 0%, #EC4899 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3), 0 6px 6px rgba(109, 40, 217, 0.3);
+        }
+        .pricing-card-hover:hover {
+            border-color: #EC4899;
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #8B5CF6, #EC4899);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, #EC4899, #8B5CF6);
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+        }
+        .section-title-underline::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #EC4899;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        .hidden-prompt-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(17, 24, 39, 0.8); /* Dark overlay */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .card-hover:hover .hidden-prompt-overlay {
+            opacity: 1;
+        }
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            animation: sparkle-animation 1.5s infinite;
+            opacity: 0;
+        }
+        @keyframes sparkle-animation {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: scale(1.5) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="header-gradient py-16 md:py-24 text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">Unlock the <span class="text-yellow-300">Magic</span> of AI</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light">Discover "Out of the Box" GPT Prompts That Transform Your Interactions.</p>
+            <a href="#pricing" class="btn-primary text-white font-semibold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition duration-300">
+                Subscribe Now & Get Weekly Magic!
+            </a>
+        </div>
+        <script>
+            const header = document.querySelector('header');
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.animationDelay = `${Math.random() * 1.5}s`;
+                header.appendChild(sparkle);
+            }
+        </script>
+    </header>
+
+    <section id="prompts" class="py-16 md:py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 text-white section-title-underline">Peek Inside the Spellbook</h2>
+            <p class="text-center text-gray-400 mb-12 md:mb-16 max-w-2xl mx-auto">
+                These are just the chapter titles... The real incantations are revealed to our subscribers. Updated weekly with fresh magic!
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-900 rounded-xl shadow-2xl p-6 relative overflow-hidden card-hover transition-all duration-300 ease-in-out">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-purple-400 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <h3 class="text-xl font-semibold text-white">The Persona Weaver</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Craft Ultra-Realistic AI Characters that breathe life into your stories and simulations.</p>
+                    <div class="hidden-prompt-overlay p-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                        <p class="font-semibold text-lg text-white">Unlock this Prompt!</p>
+                        <p class="text-sm text-gray-300">Subscribe to reveal the magic formula.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl shadow-2xl p-6 relative overflow-hidden card-hover transition-all duration-300 ease-in-out">
+                    <div class="flex items-center mb-4">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-pink-400 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.33 11.33A3.002 3.002 0 0112 14a3.002 3.002 0 01-2.33-2.67M12 6V5M16.95 7.05l-.707.707M7.05 7.05l.707.707M12 20v-1m4.95-2.95l-.707-.707M7.05 16.95l.707-.707" />
+                        </svg>
+                        <h3 class="text-xl font-semibold text-white">Idea Multiplier X10</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Generate 10x More Creative Concepts, breaking through creative blocks with ease.</p>
+                     <div class="hidden-prompt-overlay p-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                        <p class="font-semibold text-lg text-white">Unlock this Prompt!</p>
+                        <p class="text-sm text-gray-300">Subscribe to reveal the magic formula.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl shadow-2xl p-6 relative overflow-hidden card-hover transition-all duration-300 ease-in-out">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-400 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v11.494m0 0a8.485 8.485 0 0011.208 0M12 17.747a8.485 8.485 0 01-11.208 0M12 6.253c-3.085 0-5.604 2.519-5.604 5.604 0 3.085 2.519 5.604 5.604 5.604s5.604-2.519 5.604-5.604c0-3.085-2.519-5.604-5.604-5.604z" />
+                        </svg>
+                        <h3 class="text-xl font-semibold text-white">The Story Spark</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Ignite Unforgettable Narratives Instantly, turning bland ideas into epic tales.</p>
+                     <div class="hidden-prompt-overlay p-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                        <p class="font-semibold text-lg text-white">Unlock this Prompt!</p>
+                        <p class="text-sm text-gray-300">Subscribe to reveal the magic formula.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 rounded-xl shadow-2xl p-6 relative overflow-hidden card-hover transition-all duration-300 ease-in-out">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-400 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <h3 class="text-xl font-semibold text-white">Code Alchemist</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Transmute Plain Language into Powerful Scripts, automating tasks with AI.</p>
+                     <div class="hidden-prompt-overlay p-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                        <p class="font-semibold text-lg text-white">Unlock this Prompt!</p>
+                        <p class="text-sm text-gray-300">Subscribe to reveal the magic formula.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl shadow-2xl p-6 relative overflow-hidden card-hover transition-all duration-300 ease-in-out">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-400 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <h3 class="text-xl font-semibold text-white">Marketing Mage</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Conjure Compelling Copy that Converts, captivating audiences and driving sales.</p>
+                     <div class="hidden-prompt-overlay p-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                        <p class="font-semibold text-lg text-white">Unlock this Prompt!</p>
+                        <p class="text-sm text-gray-300">Subscribe to reveal the magic formula.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl shadow-2xl p-6 relative overflow-hidden card-hover transition-all duration-300 ease-in-out">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-400 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-5.998 12.083 12.083 0 01.665-6.479L12 14z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"  d="M12 14l9-5-9-5-9 5 9 5zm0 0v3.542M12 12.25l-6.16-3.422m12.32 0L12 12.25" />
+                        </svg>
+                        <h3 class="text-xl font-semibold text-white">Learning Oracle</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Distill Complex Topics into Simple Insights, making learning faster and more effective.</p>
+                     <div class="hidden-prompt-overlay p-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                        <p class="font-semibold text-lg text-white">Unlock this Prompt!</p>
+                        <p class="text-sm text-gray-300">Subscribe to reveal the magic formula.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-16 md:py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 text-white section-title-underline">Choose Your Magical Key</h2>
+            <p class="text-center text-gray-400 mb-12 md:mb-16 max-w-2xl mx-auto">
+                Unlock a treasure trove of powerful GPT prompts. All plans include weekly updates delivered straight to your inbox!
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 text-center border-2 border-gray-700 pricing-card-hover transition-all duration-300 ease-in-out">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Monthly Spark</h3>
+                    <p class="text-4xl font-bold text-pink-400 mb-1">₹9 <span class="text-lg font-normal text-gray-400">/month</span></p>
+                    <p class="text-gray-500 mb-6 text-sm">Billed monthly</p>
+                    <ul class="text-gray-400 mb-8 space-y-2 text-left">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>All Magical Prompts</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Weekly Updates</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Email Delivery</li>
+                    </ul>
+                    <button class="w-full btn-primary text-white font-semibold py-3 px-6 rounded-lg shadow hover:shadow-md transition duration-300">Subscribe Monthly</button>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 text-center border-2 border-gray-700 pricing-card-hover transition-all duration-300 ease-in-out">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Quarterly Charm</h3>
+                    <p class="text-4xl font-bold text-pink-400 mb-1">₹25 <span class="text-lg font-normal text-gray-400">/3 months</span></p>
+                    <p class="text-gray-500 mb-6 text-sm">Save over 7% (₹27)</p>
+                     <ul class="text-gray-400 mb-8 space-y-2 text-left">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>All Magical Prompts</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Weekly Updates</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Email Delivery</li>
+                    </ul>
+                    <button class="w-full btn-primary text-white font-semibold py-3 px-6 rounded-lg shadow hover:shadow-md transition duration-300">Subscribe Quarterly</button>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl shadow-2xl p-8 text-center border-2 border-pink-500 relative pricing-card-hover transition-all duration-300 ease-in-out transform scale-105">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full">POPULAR</div>
+                    <h3 class="text-2xl font-semibold text-white mb-2 mt-3">Half-Year Hex</h3>
+                    <p class="text-4xl font-bold text-pink-400 mb-1">₹45 <span class="text-lg font-normal text-gray-400">/6 months</span></p>
+                    <p class="text-gray-500 mb-6 text-sm">Save over 16% (₹54)</p>
+                     <ul class="text-gray-400 mb-8 space-y-2 text-left">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>All Magical Prompts</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Weekly Updates</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Email Delivery</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Priority Support</li>
+                    </ul>
+                    <button class="w-full btn-primary text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">Choose Popular Plan</button>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl shadow-xl p-8 text-center border-2 border-gray-700 pricing-card-hover transition-all duration-300 ease-in-out">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Annual Enchantment</h3>
+                    <p class="text-4xl font-bold text-pink-400 mb-1">₹89 <span class="text-lg font-normal text-gray-400">/year</span></p>
+                    <p class="text-gray-500 mb-6 text-sm">Best Value! Save over 17% (₹108)</p>
+                     <ul class="text-gray-400 mb-8 space-y-2 text-left">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>All Magical Prompts</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Weekly Updates</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Email Delivery</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Early Access to New Prompts</li>
+                    </ul>
+                    <button class="w-full btn-primary text-white font-semibold py-3 px-6 rounded-lg shadow hover:shadow-md transition duration-300">Go Annual</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-gray-800 text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Ready to Weave Your Own AI Magic?</h2>
+            <p class="text-gray-400 mb-8 max-w-xl mx-auto">
+                Don't miss out on weekly prompt drops that will supercharge your AI capabilities. Subscribe today and start creating like never before!
+            </p>
+            <button id="subscribeFooterBtn" class="btn-primary text-white font-semibold py-4 px-10 rounded-lg text-xl shadow-lg hover:shadow-xl transition duration-300">
+                Yes, I Want Magical Prompts!
+            </button>
+            <p class="text-gray-500 text-sm mt-10">&copy; 2025 Out of the Box AI. All Rights Reserved. <br> Conjuring amazing AI experiences, one prompt at a time.</p>
+        </div>
+    </footer>
+
+    <div id="subscriptionModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50 hidden transition-opacity duration-300">
+        <div class="bg-white p-8 rounded-lg shadow-xl max-w-md w-full text-gray-800 transform transition-all duration-300 scale-95 opacity-0" id="modalContent">
+            <div class="text-right">
+                <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">&times;</button>
+            </div>
+            <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-pink-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-2xl font-semibold mb-3">Almost There!</h3>
+                <p class="text-gray-600 mb-6">
+                    You're one step away from unlocking magical GPT prompts! In a real application, this would lead to a payment gateway.
+                </p>
+                <p class="text-sm text-gray-500">Thank you for your interest!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('subscriptionModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const subscribeButtons = document.querySelectorAll('.btn-primary, #subscribeFooterBtn');
+
+        subscribeButtons.forEach(button => {
+            // Check if the button is part of a pricing card to avoid opening modal for header button linking to #pricing
+            if (!button.closest('header') || button.id === 'subscribeFooterBtn' ) {
+                 button.addEventListener('click', (e) => {
+                    // Prevent scroll if it's a direct subscribe button not an anchor
+                    if(button.getAttribute('href') !== '#pricing') {
+                        e.preventDefault();
+                    }
+                    if (button.getAttribute('href') !== '#pricing') { // Only open modal if not the header anchor
+                        modal.classList.remove('hidden');
+                        setTimeout(() => { // For transition effect
+                            modal.classList.remove('opacity-0');
+                            modalContent.classList.remove('scale-95', 'opacity-0');
+                            modalContent.classList.add('scale-100', 'opacity-100');
+                        }, 10);
+                    }
+                });
+            }
+        });
+        
+        function closeModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) { // Click outside the modal content
+                closeModal();
+            }
+        });
+
+        // ESC key to close modal
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+    </script>
+
+</body>
+</html>
