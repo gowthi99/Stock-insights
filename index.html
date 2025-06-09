@@ -200,6 +200,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- IMPORTANT: PASTE YOUR PERPLEXITY API KEY HERE ---
+            const perplexityApiKey = "YOUR_PERPLEXITY_API_KEY_HERE"; 
+            // ----------------------------------------------------
+
             const generateBtn = document.getElementById('generate-signals');
             const signalsContainer = document.getElementById('signals-container');
             const marketOverviewContainer = document.getElementById('market-overview-container');
@@ -325,6 +329,11 @@
             }
             
             async function fetchAndGenerateSignals() {
+                 if (perplexityApiKey === "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" || !perplexityApiKey) {
+                    alert("Please enter your Perplexity API key at the top of the <script> tag.");
+                    return;
+                }
+
                 loader.classList.remove('hidden');
                 signalsContainer.innerHTML = '';
                 marketOverviewContainer.innerHTML = '';
@@ -336,40 +345,38 @@
                     const industry = filterIndustry.value;
                     const marketCap = filterMarketCap.value;
 
-                    const filterInstructions = `
-                        Please adhere to the following user-defined filters for the stock signals:
-                        - Market/Region: ${region}.
-                        - Industry: ${industry}.
-                        - Market Capitalization: ${marketCap}.
-                        If a filter is set to 'Any' or 'Global', you have broad discretion for that category. Otherwise, the generated signals must match the specified criteria.
-                        For Indian stocks, provide prices in INR (₹). For US stocks, use USD ($). For Global, use the appropriate currency symbol.
-                        The market overview should also be tailored to the selected region if it's not 'Global'.
-                    `;
+                    const filterInstructions = `Please adhere to the following user-defined filters for the stock signals: Market/Region: ${region}, Industry: ${industry}, Market Capitalization: ${marketCap}. If a filter is set to 'Any' or 'Global', you have broad discretion. Otherwise, the generated signals must match the specified criteria. For Indian stocks, provide prices in INR (₹). For US stocks, use USD ($). For Global, use the appropriate currency symbol. The market overview should also be tailored to the selected region if it's not 'Global'.`;
 
-                    const prompt = `
-                        Analyze the current stock market landscape based on general knowledge of recent major economic events.
-                        ${filterInstructions}
-                        Format the final output as a single valid JSON object with two keys: "market_overview" and "signals".
-                        The "market_overview" object should contain: "sentiment", "summary", and "key_indices" (an array of two relevant index objects with "name", "level", "change").
-                        The "signals" key should contain an array of three diverse fictional stock signals that match the filters. Each signal object must contain: "ticker", "name", "type", "price", "reason", "confidence", "timeframe", "risk", "key_data" (an array of strings), and "sourceUrl".
-                    `;
+                    const prompt = `Analyze the current stock market landscape. ${filterInstructions} Format the final output as a single valid JSON object with two keys: "market_overview" and "signals". The "market_overview" object should contain: "sentiment", "summary", and "key_indices" (an array of two relevant index objects with "name", "level", "change"). The "signals" key should contain an array of three diverse fictional stock signals that match the filters. Each signal object must contain: "ticker", "name", "type", "price", "reason", "confidence", "timeframe", "risk", "key_data" (an array of strings), and "sourceUrl" (use "#"). ALWAYS respond with only the raw JSON object, without any surrounding text or markdown.`;
                     
-                    const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-                    const apiKey = "";
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    const payload = {
+                        model: "llama-3-sonar-large-32k-online",
+                        messages: [
+                            { role: "system", content: "You are a financial analyst AI. You will provide data in the exact JSON format requested." },
+                            { role: "user", content: prompt }
+                        ]
+                    };
+                    const apiUrl = "https://api.perplexity.ai/chat/completions";
                     
-                    const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                    if (!response.ok) throw new Error(`API call failed: ${response.statusText}`);
+                    const response = await fetch(apiUrl, { 
+                        method: 'POST', 
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${perplexityApiKey}`
+                        }, 
+                        body: JSON.stringify(payload) 
+                    });
+                    if (!response.ok) throw new Error(`API call failed: ${response.status} ${response.statusText}`);
                     const result = await response.json();
                    
-                    if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0]) {
-                        let jsonString = result.candidates[0].content.parts[0].text.replace(/^```json\s*/, '').replace(/\s*```$/, '').trim();
+                    if (result.choices && result.choices[0] && result.choices[0].message && result.choices[0].message.content) {
+                        const jsonString = result.choices[0].message.content.replace(/^```json\s*/, '').replace(/\s*```$/, '').trim();
                         const data = JSON.parse(jsonString);
                         renderMarketOverview(data.market_overview);
                         renderSignals(data.signals);
                         updateTimeEl.textContent = new Date().toLocaleString();
                     } else {
-                        throw new Error("Received an invalid response from the AI model.");
+                        throw new Error("Received an invalid response structure from the Perplexity API.");
                     }
                 } catch (error) {
                     console.error("Error generating signals:", error);
@@ -382,6 +389,11 @@
             }
 
             function handleDeeperDiveClick(signal, button) {
+                if (perplexityApiKey === "YOUR_PERPLEXITY_API_KEY_HERE" || !perplexityApiKey) {
+                    alert("Please enter your Perplexity API key at the top of the <script> tag.");
+                    return;
+                }
+
                 modalTitle.textContent = `Analysis for ${signal.ticker}`;
                 modalContent.innerHTML = `<div class="flex justify-center items-center p-8"><div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div></div>`;
                 modal.classList.add('active');
@@ -398,29 +410,34 @@
             }
 
             async function fetchDeeperDiveAnalysis(signal) {
-                const prompt = `
-                    Perform a detailed analysis for the fictional stock: ${signal.name} (${signal.ticker}).
-                    The current signal is "${signal.type}" with the reasoning: "${signal.reason}".
-                    Based on this, generate a more detailed breakdown. Provide:
-                    1. "bull_case": A list of 2-3 bullet points outlining the optimistic outlook.
-                    2. "bear_case": A list of 2-3 bullet points outlining the potential risks and pessimistic outlook.
-                    3. "catalysts": A list of 1-2 potential future events or factors that could significantly impact the stock price.
-                    Format the output as a single valid JSON object with keys: "bull_case", "bear_case", and "catalysts". The value for each key should be an array of strings.`;
+                const prompt = `Perform a detailed analysis for the fictional stock: ${signal.name} (${signal.ticker}). The current signal is "${signal.type}" with the reasoning: "${signal.reason}". Based on this, generate a more detailed breakdown. Provide: 1. "bull_case": A list of 2-3 bullet points. 2. "bear_case": A list of 2-3 bullet points. 3. "catalysts": A list of 1-2 potential future events. Format the output as a single valid JSON object with keys: "bull_case", "bear_case", and "catalysts". The value for each key should be an array of strings. ALWAYS respond with only the raw JSON object, without any surrounding text or markdown.`;
                  try {
-                    const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-                    const apiKey = "";
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    const payload = {
+                        model: "llama-3-sonar-large-32k-online",
+                        messages: [
+                            { role: "system", content: "You are a financial analyst AI. You will provide data in the exact JSON format requested." },
+                            { role: "user", content: prompt }
+                        ]
+                    };
+                    const apiUrl = "https://api.perplexity.ai/chat/completions";
                     
-                    const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                    if (!response.ok) throw new Error(`API call failed: ${response.statusText}`);
+                    const response = await fetch(apiUrl, { 
+                        method: 'POST', 
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${perplexityApiKey}`
+                        }, 
+                        body: JSON.stringify(payload) 
+                    });
+                    if (!response.ok) throw new Error(`API call failed: ${response.status} ${response.statusText}`);
                     const result = await response.json();
 
-                    if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0]) {
-                        let jsonString = result.candidates[0].content.parts[0].text.replace(/^```json\s*/, '').replace(/\s*```$/, '').trim();
+                    if (result.choices && result.choices[0] && result.choices[0].message && result.choices[0].message.content) {
+                        const jsonString = result.choices[0].message.content.replace(/^```json\s*/, '').replace(/\s*```$/, '').trim();
                         const analysis = JSON.parse(jsonString);
                         renderDeeperDive(analysis);
                     } else {
-                        throw new Error("Invalid response from AI model.");
+                        throw new Error("Invalid response structure from the Perplexity API.");
                     }
                 } catch (error) {
                     modalContent.innerHTML = `<div class="text-center p-4 bg-red-50 text-red-700 rounded-lg"><p><strong>Analysis Failed</strong></p><p class="text-sm">${error.message}</p></div>`;
